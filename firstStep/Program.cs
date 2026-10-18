@@ -1,198 +1,145 @@
 ﻿
 using System.Data;
 using System.Data.SqlTypes;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
-
 namespace firstStep
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] Arguments)
 
         {
+
             #region Question 1
+            //Book book = new Book();
+            //Console.WriteLine(book.password);
 
-            //double[] price = { 25.5, 40.0, 33.75 };
+            //What happens: Compilation Error.
+            // Why "password" is a private field in the Book class so it cannot be accessed out side 
 
-            //Console.WriteLine(price[1]);
             #endregion
 
             #region Question 2
 
-            //int[,] shelfCopies = { { 3,5}, {1,4 } };
+            //Book book = new Book();
 
-            //Console.WriteLine(shelfCopies[1,0]);
+            //Console.WriteLine(book.copiesInStock);
+
+            // why => because varible copiesInStock work with internal and the means of attaining that
 
 
             #endregion
 
             #region Question 3
+            //Book book = new Book();
 
-            //static void WelcomeMessage()
-            //{
-            //    Console.WriteLine("Welcome to the Library!");
-            //}
+            //Console.WriteLine(book.title);
 
-            //WelcomeMessage();
+
 
             #endregion
 
             #region Question 4
 
-            //static void printBookTitle(string title)
-            //{
-            //    Console.WriteLine("Book title:" + title);
-            //}
 
-            //printBookTitle("cleanCode");
+            //Book book = new Book();
+
+
+            //book.BookGenre = Genre.Science;
+            //Console.WriteLine(book.BookGenre);
+
+
+
             #endregion
 
-            #region Question 5
+            #region Question 5 
 
-            //static void AddBounsPages(int pages)
-            //{
-            //    pages += 50;
-            //    Console.WriteLine(pages);
-            //}
-            //int pages = 400;
-            //AddBounsPages(pages);
-            //Console.WriteLine(pages);
-            ////  Because passing by vlaue
+
+            //Book book = new Book();
+
+
+            //book.BookGenre = Genre.Science;
+            //book.BookGenre = Genre.fiction;
+            //book.BookGenre = Genre.NonFiction;
+            //int x = (int)Genre.Science;
+            //int y = (int)Genre.NonFiction;
+            //int z = (int)Genre.fiction;
+            //Console.WriteLine(x + y + z);
+            //Console.WriteLine(x);
+            //Console.WriteLine(y);
+            //Console.WriteLine(z);
+
+
             #endregion
 
             #region Question 6
 
-            //static void ApplyDiscount(double[] prices)
-            //{
-            //    prices[0] -= 5;
+            //Book book = new Book();
 
-            //}
+            //int genreNumber = 1;
+            //Genre myGenre = (Genre)genreNumber;
+            //Console.WriteLine(myGenre);
 
-            //double[] prices = { 25.5, 40.0 };
-            //ApplyDiscount(prices);
-            //Console.WriteLine(prices[0]);
-
-            //// this is it passing by refrence because []
             #endregion
 
             #region Question 7
 
-            //static void AddBounsPages(ref int pages)
-            //{
-            //    pages += 50;
+            //Genre genre = Genre.Fiction;
 
-            //}
-            //int pages = 400;
-            //AddBounsPages(ref pages);
-            //Console.WriteLine(pages);
-            //// Because passing by ref
+            //Console.WriteLine(Convert.ToString(genre));
+
+            //Console.WriteLine("toString => " + genre);
+
             #endregion
 
             #region Question 8 
 
-            //static void RepalceArray(ref double[] prices)
-            //{
+            //string genreText = "Science";
 
-            //    prices = new double[] { 10.0, 12.5, 15.0 };
-
-            //}
-            //double[] prices = { 1.0, 2.0 };
-
-            //RepalceArray(ref prices);
-
-            //Console.WriteLine(prices.Length);
-
-
-
-
-
+            //Genre parasedGenre = (Genre)Enum.Parse(typeof(Genre), genreText);
+            //Console.WriteLine(genreText);
 
             #endregion
 
             #region Question 9
 
+            //string generalText = "MyStery";
 
-            //static bool TryGetPrice(string title, out double price)
+            //bool isSuccess = Enum.TryParse<Genre>(generalText, out Genre result);
+
+            //if (isSuccess)
             //{
-
-            //    price = 25.5;
-            //    title = "Clean Code";
-
-            //    if (title == "Clean Code")
-            //    {
-            //        price = 25.5;
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        price = 0;
-            //        return false;
-            //    }
-
+            //    Console.WriteLine("Success" + result);
             //}
-
-            //string myTitle = "Clean Code";
-            //double myPrice;
-
-            //bool isFound = TryGetPrice(myTitle, out myPrice);
-            //Console.WriteLine(myPrice);
-
-
-            #endregion
-
-            #region Question 10
-
-            //static void PrintBookInfo(string title, int pages = 300)
+            //else
             //{
-            //    Console.WriteLine($"title: {title}, Pages: {pages}");
-            //}
-
-            //PrintBookInfo("pages");
-            //PrintBookInfo("title", 301);
-
-            #endregion
-
-            #region Question 11
-
-            //static void PrintBookInfo(string title, int pages = 300)
-            //{
-            //    Console.WriteLine(title + pages);
+            //    Console.WriteLine("invalid");
             //}
 
 
-            //PrintBookInfo(pages: 301 , title: "pages");
-
             #endregion
-
-            #region Question 12
-
-            //static void PrintAllTitles(params string[] titles)
-            //{
-
-            //    foreach (string title in titles)
-            //    {
-            //        Console.WriteLine(title);
-            //    }
-            //}
-
-            //PrintAllTitles("1", "2", "3", "4", "5");
-
-            #endregion
-
 
         }
 
+
     }
 
+    internal enum Genre
+    {
+
+        Fiction, NonFiction, Science
+    }
+    internal class Book
+    {
+        public string title = "test";
+        public Genre BookGenre;
+    }
 }
-
-
-
-
 
 
